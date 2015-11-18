@@ -8,7 +8,7 @@ I've tried many approaches and there is the typical SSH/git approach, the docker
 
 ### Requirements ###
 
-* Your project directory with a docker-compose file
+* A project folder with a docker-compose file
 * A docker server you wish to deploy to
 
 ### Usage ###
