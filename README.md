@@ -2,12 +2,9 @@
 Deploy your code to any Docker servers
 
 ### About ###
-I wanted an absolute most simple way to deploying my code to remote servers.
-Since I dockerized most of my projects, I still found it cumbersome to deploy my code.
-I've tried docker-machine and I quickly realized to deploy my code changes, it gets difficult as I'd need to re-build the image from the Dockerfile over and over.
-And because I tend to volumize the codebase, docker-machine wasn't suitable for my needs.
-
-I just needed a simple solution so here it is.
+I wanted an absolute most simple way to deploy my local codebase on to remote servers with Docker running.
+Since I now dockerize most of my projects, I found it cumbersome everytime I needed to deploy my code.
+I've tried many approaches and there is the typical SSH/git approach, the docker-machine approach, ansible approach, etc... and the list goes on. They all had some quirky faults and I decided to make something simple for my needs.
 
 ### Requirements ###
 
