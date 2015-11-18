@@ -11,8 +11,8 @@ I just needed a simple solution so here it is.
 
 ### Requirements ###
 
-1) A directory with a docker-compose file
-1) A docker server you wish to deploy to
+* A directory with a docker-compose file
+* A docker server you wish to deploy to
 
 ### Usage ###
 ./docker-deploy [folder-with-a-docker-compose-file] [server]
