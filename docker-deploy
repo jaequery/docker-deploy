@@ -1,0 +1,13 @@
+#!/bin/bash
+if [ -z "$1" ]
+  then
+    echo "usage) docker-deploy site.com jae@docker-server.com"
+    exit 1
+fi
+if [ -z "$2" ]
+  then
+    echo "usage) docker-deploy site.com jae@docker-server.com"
+    exit 1
+fi
+          
+rsync -avzr $1 $2:~/sites/ && ssh $2 "cd ~/sites/$1 && docker-compose up -d"
