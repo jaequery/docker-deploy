@@ -8,11 +8,11 @@ I've tried many approaches and there is the typical SSH/git approach, the docker
 
 ### Requirements ###
 
-* A directory with a docker-compose file
+* Your project directory with a docker-compose file
 * A docker server you wish to deploy to
 
 ### Usage ###
-./docker-deploy [folder-with-a-docker-compose-file] [server]
+./docker-deploy [project_folder] [docker_server]
 
 ### Example ###
 
