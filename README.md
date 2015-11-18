@@ -9,7 +9,7 @@ I've tried many approaches and there is the typical SSH/git approach, the docker
 ### Requirements ###
 
 * A project folder with a docker-compose file
-* A docker server you wish to deploy to
+* A docker server with docker-compose installed
 
 ### Usage ###
 ./docker-deploy [project_folder] [docker_server]
