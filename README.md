@@ -25,15 +25,17 @@ cd ~/Projects
 docker-deploy site.com jae@server.com
 ```
 
-### For best results ###
+### For Virtual Hosting ###
 
-If you are a web developer and you have multiple websites to host, then you should have a proxy such as jwilder/proxy running on your Docker server.
+I am often surprised to come across those who have not yet realized the power of jwilder/proxy.
+If you have multiple websites you want to host, then you should definitely consider having jwilder/proxy running on your Docker server listening to your port 80.
 
 ```
 docker run -d -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro jwilder/nginx-proxy
 ```
 
-I do this to host dozens of sites in a single Docker container.
+Then in the docker compose file, simply assign an environmental variable called VIRTUAL_HOST with the hostname you wish to host.
+Take a look at the docker compose file below to see what I mean.
 
 ### docker-compose.yml ###
 
