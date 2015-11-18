@@ -17,7 +17,8 @@ I've tried many approaches and there is the typical SSH/git approach, the docker
 ### Example ###
 
 * Let's say ~/Projects/site.com is my local dev environment and it has a docker-compose.yml file
-* And I have SSH access to jae@server.com
+* And I have SSH access to jae@server.com which has Docker installed
+* Simply run this to deploy your project to your target Docker server
 
 ```
 cd ~/Projects
