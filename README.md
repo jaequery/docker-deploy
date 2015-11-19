@@ -2,9 +2,7 @@
 Deploy your code to any Docker servers
 
 ### About ###
-I wanted an absolute most simple way to deploy my local codebase on to remote servers with Docker running.
-Since I now dockerize most of my projects, I found it cumbersome everytime I needed to deploy my code.
-I've tried many approaches and there is the typical SSH/git approach, the docker-machine approach, ansible approach, etc... and the list goes on. They all had some quirky faults and I decided to make something simple for my needs.
+This script provides a super simple way of deploying your projects onto remote Docker hosts by only utilizing rsync, SSH, and docker-compose.
 
 ### Requirements ###
 
