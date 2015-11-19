@@ -32,8 +32,9 @@ Basically it does the following:
 * ssh jae@server.com "cd ~/sites/site.com && docker-compose up -d"
 
 ### That's it! ###
-That's pretty much it.
-If you like to keep things super simple, I believe this is as simple as it gets.
+Simple, right?
+Sometimes, I feel people tend to over-engineer and deployment is one of those areas.
+Unless you are serving Google-traffic, this deployment style will work fine for most of your projects.
 Hope you enjoy it.
 
 ### For Virtual Hosting ###
