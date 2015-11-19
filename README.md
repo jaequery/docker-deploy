@@ -9,7 +9,7 @@ I've tried many approaches and there is the typical SSH/git approach, the docker
 ### Requirements ###
 
 * A project folder with a docker-compose file
-* A docker server with docker-compose installed
+* An SSH access to a server with Docker and docker-compose installed
 
 ### Usage ###
 ./docker-deploy [project_folder] [docker_server]
@@ -24,6 +24,12 @@ I've tried many approaches and there is the typical SSH/git approach, the docker
 cd ~/Projects
 docker-deploy site.com jae@server.com
 ```
+
+### What does it do? ###
+The docker-deploy script is simply a wrapper around a couple bash scripts.
+Basically it does the following:
+* rsync -avzr ./site.com jae@server.com:~/sites/site.com
+* ssh jae@server.com "cd ~/sites/site.com && docker-compose up -d"
 
 ### For Virtual Hosting ###
 
