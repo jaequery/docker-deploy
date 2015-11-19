@@ -31,7 +31,10 @@ Basically it does the following:
 * rsync -avzr ./site.com jae@server.com:~/sites/site.com
 * ssh jae@server.com "cd ~/sites/site.com && docker-compose up -d"
 
-Well folks, that's pretty much it. If you like to keep things super simple, I believe this is as simple as it gets.
+### That's it! ###
+That's pretty much it.
+If you like to keep things super simple, I believe this is as simple as it gets.
+Hope you enjoy it.
 
 ### For Virtual Hosting ###
 
