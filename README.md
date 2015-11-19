@@ -8,7 +8,7 @@ I've tried many approaches and there is the typical SSH/git approach, the docker
 
 ### Requirements ###
 
-* A project folder with a docker-compose file
+* A project folder with a docker-compose.yml file
 * An SSH access to a server with Docker and docker-compose installed
 
 ### Usage ###
