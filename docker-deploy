@@ -1,8 +1,37 @@
 #!/bin/bash
+
 if [ -z "$2" ]
   then
     echo "usage) docker-deploy site.com jae@docker-server.com"
     exit 1
 fi
 
-rsync -avzr --exclude=.git $1 $2:~/sites/ && ssh $2 "cd ~/sites/$1 && docker-compose up -d"
+host=$(echo $2 | cut -f2 -d@)
+
+# if docker doesnt exist on target server, install it
+docker_exist=`ssh $2 which docker`
+if [[ -z "$docker_exist" ]]
+then
+    echo "docker not exist, installing docker with docker-machine, one moment ..."
+    docker-machine create -d "generic" --generic-ip-address="$host" --generic-ssh-user="root" dodocker
+fi
+
+# if docker-compose doesnt exist on server, install it
+docker_compose_exist=`ssh $2 which docker-compose`
+if [[ -z "$docker_compose_exist" ]]
+then
+    echo "docker-compose not exist, installing docker-compose, one moment ..."
+    ssh $2 'curl -L https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose'
+    ssh $2 "chmod +x /usr/local/bin/docker-compose"
+fi
+
+# if docker container nginx-proxy is not running, run it
+docker_proxy_exist=`ssh $2 docker ps |grep jwilder/nginx-proxy`
+if [[ -z "$docker_proxy_exist" ]]
+then
+    echo "installing docker nginx proxy, one moment ..."
+    ssh $2 "docker run -d --restart=always -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro --name=proxy jwilder/nginx-proxy"
+fi
+
+# sync it
+rsync -avzr $1 $2:~/sites/ && ssh $2 "cd ~/sites/$1 && docker-compose up -d"
