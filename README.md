@@ -6,8 +6,12 @@ This script provides a super simple way of deploying your projects onto remote D
 
 ### Requirements ###
 
-* A project folder with a docker-compose.yml file
-* An SSH access to a server with Docker and docker-compose installed
+* An application folder with a docker-compose.yml file
+* SSH access to a taret Linux (Centos, Ubuntu) server
+* Docker Machine on local
+
+### What it does ###
+docker-deploy lets you deploy your stack in a single command without any of the fuss. All you really need is just a working application folder with a docker-compose.yml file inside it and a target server with SSH access. If the target server doesn't have Docker (or docker-compose) installed, it will even install it for you!
 
 ### Usage ###
 ./docker-deploy [project_folder] [docker_server]
