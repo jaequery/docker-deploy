@@ -1,19 +1,27 @@
 #!/bin/bash
 
+if [ -z "$1" ]
+then
+    echo "usage) docker-deploy site.com jae@docker-server.com"
+    exit 1
+fi
 if [ -z "$2" ]
-  then
+then
     echo "usage) docker-deploy site.com jae@docker-server.com"
     exit 1
 fi
 
-host=$(echo $2 | cut -f2 -d@)
+project=$1
+target=$2
+host=$(echo $target | cut -f2 -d@)
 
-# if docker doesnt exist on target server, install it
+# if docker doesnt exist on server, install it
 docker_exist=`ssh $2 which docker`
 if [[ -z "$docker_exist" ]]
 then
-    echo "docker not exist, installing docker with docker-machine, one moment ..."
-    docker-machine create -d "generic" --generic-ip-address="$host" --generic-ssh-user="root" dodocker
+    echo "docker not exist, installing docker, one moment ..."
+    #docker-machine create -d "generic" --generic-ip-address="$host" --generic-ssh-user="root" $1
+    ssh $2 'curl -sSL https://get.docker.com/ | sh'
 fi
 
 # if docker-compose doesnt exist on server, install it
@@ -34,4 +42,9 @@ then
 fi
 
 # sync it
-rsync -avzr $1 $2:~/sites/ && ssh $2 "cd ~/sites/$1 && docker-compose up -d"
+if [ "$3" == "" ]
+then
+    rsync -avzr $1 $2:~/sites/ && ssh $2 "cd ~/sites/$1 && docker-compose stop && docker-compose up && docker-compose logs"
+else
+    rsync -avzr $1 $2:~/sites/ && ssh $2 "cd ~/sites/$1 && docker-compose stop && docker-compose -f $3 up && docker-compose logs"
+fi
